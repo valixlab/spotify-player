@@ -90,6 +90,7 @@ if __name__ == '__main__':
                     :root {
                         --color: #1DB954;
                         --c-rgb: 29, 185, 84;
+                        --svg: #000000;
                     }
                     * { box-sizing: border-box;}
                     html, body {
@@ -475,11 +476,11 @@ if __name__ == '__main__':
                                 <div class="btn-container no-drag"><svg class="btn" id="prev" onclick="prev()" display="block" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M 10.971 0.285 C 11.589 -0.086 12.359 -0.095 12.986 0.26 C 13.613 0.615 14 1.279 14 2 L 14 14 C 14 14.721 13.613 15.385 12.986 15.74 C 12.359 16.095 11.589 16.086 10.971 15.715 L 0.974 9.717 C 0.371 9.356 0.001 8.705 0 8.002 C -0.001 7.299 0.368 6.647 0.971 6.285 Z" fill="transparent" height="16.000038879233593px" id="qhguYrO07" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--js9iwy, 2)" stroke="var(--1m973uw, rgb(0,0,0))" transform="translate(7 4)" width="14.000202118669932px"></path><path d="M 0 16 L 0 0" fill="transparent" height="16px" id="T5Z3GygRE" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--js9iwy, 2)" stroke="var(--1m973uw, rgb(0,0,0))" transform="translate(3 4)" width="1px"></path></svg></div>
                                 <div id="pause-container" class="no-drag" onclick="pause();">
                                     <svg id="icon-pause" class="pause-state" viewBox="0 0 24 24" width="13" height="13">
-                                        <rect x='6' y='4' width='4' height='16' rx='1' fill='black'/>
-                                        <rect x='14' y='4' width='4' height='16' rx='1' fill='black'/>
+                                        <rect x='6' y='4' width='4' height='16' rx='1' fill='var(--svg)'/>
+                                        <rect x='14' y='4' width='4' height='16' rx='1' fill='var(--svg)'/>
                                     </svg>
                                     <svg id="icon-play" class="play-state" viewBox="0 0 24 24" width="13" height="13" style="display: none;">
-                                        <path d='M7 4 L19 12 L7 20 Z' fill='black' stroke='black' stroke-width='1' stroke-linejoin='round'/>
+                                        <path d='M7 4 L19 12 L7 20 Z' fill='var(--svg)' stroke='var(--svg)' stroke-width='1' stroke-linejoin='round'/>
                                     </svg>
                                 </div>
                                 <div class="btn-container no-drag"><svg class="btn" id="skip" onclick="next()" display="block" role="presentation" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 L 0 16" fill="transparent" height="16px" id="WDqicuhsL" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--js9iwy, 2)" stroke="var(--1m973uw, rgb(0,0,0))" transform="translate(21 4)" width="1px"></path><path d="M 3.029 0.285 C 2.411 -0.086 1.642 -0.095 1.015 0.26 C 0.388 0.615 0 1.279 0 2 L 0 14 C 0 14.721 0.388 15.385 1.015 15.74 C 1.642 16.095 2.411 16.086 3.029 15.715 L 13.026 9.717 C 13.63 9.356 14 8.705 14 8.002 C 14.001 7.299 13.632 6.647 13.029 6.285 Z" fill="transparent" height="16.000038879233582px" id="NuQ9n6JYX" stroke-dasharray="" stroke-linecap="round" stroke-linejoin="round" stroke-width="var(--js9iwy, 2)" stroke="var(--1m973uw, rgb(0,0,0))" transform="translate(3 4)" width="14.000202118669932px"></path></svg></div>
@@ -538,12 +539,16 @@ if __name__ == '__main__':
                     const r = parseInt(hex.substring(0, 2), 16);
                     const g = parseInt(hex.substring(2, 4), 16);
                     const b = parseInt(hex.substring(4, 6), 16);
-                    return `${r}, ${g}, ${b}`;
+                    return [`${r}, ${g}, ${b}`, [r,g,b]];
                 }
 
                 function setColor(hex) {
                     document.documentElement.style.setProperty('--color', hex);
-                    document.documentElement.style.setProperty('--c-rgb', hexToRgb(hex));
+                    htr = hexToRgb(hex);
+                    document.documentElement.style.setProperty('--c-rgb', htr[0]);
+                    lum = htr[1][0]+htr[1][1]+htr[1][2];
+                    if (lum<330) { document.documentElement.style.setProperty('--svg', "#ffffff"); } 
+                    else { document.documentElement.style.setProperty('--svg', "#000000"); }
                 }
 
                 function color() {
