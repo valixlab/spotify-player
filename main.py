@@ -42,10 +42,7 @@ class Api():
         settings["color"] = color
         with open(f"{os.getcwd()}/settings.json", "w") as fichier:
             json.dump({"x":window.x, "y":window.y, "color":settings["color"]}, fichier)
-
-    def print(self, text):
-        print(text)
-
+            
     def play_pause(self):
         run_playerctl(["play-pause"])
 
