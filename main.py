@@ -3,6 +3,7 @@ import subprocess
 import threading
 import os
 import json
+import time
 
 try:
     with open(f"{os.getcwd()}/settings.json","r",encoding="utf-8") as f:
@@ -36,6 +37,7 @@ def update_loop(window: webview.Window):
     while (True):
         data = get_metadata()
         window.evaluate_js(f"updateInfo({json.dumps(data)})")
+        time.sleep(0.5)
 
 class Api():
     def change_color(self, color):
