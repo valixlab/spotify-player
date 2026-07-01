@@ -61,9 +61,6 @@ class Api():
         settings["auto"] = value
         save()
 
-    def print(self, text):
-        print(text)
-
     def play_pause(self):
         run_playerctl(["play-pause"])
 
