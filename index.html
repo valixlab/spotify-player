@@ -246,6 +246,7 @@
                 display: flex;
                 flex-direction: row;
                 padding : 12px;
+                margin-left: 10px;
             }
             #info {
                 margin-left: 12px;
@@ -398,6 +399,7 @@
                 border-radius: 2px;
                 margin-top: 8px;
                 overflow: hidden;
+                margin-right: 12px;
             }
             #progression {
                 height: 100%;
@@ -405,6 +407,56 @@
                 width: 0%;
                 transition: width 0.3s linear;
             }
+            #info {
+            margin-left: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Empêche les éléments enfants de dépasser */
+            flex: 1; /* Permet au bloc d'infos de prendre l'espace disponible sans tout casser */
+        }
+
+        #titre {
+            position: relative;
+            height: 19px; /* Légèrement augmenté pour éviter de couper le texte verticalement */
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            color: rgb(255, 255, 255, 0.96);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* Ajoute des points de suspension (...) si c'est trop long */
+        }
+
+        #controls {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            height: 26px;
+            flex-wrap: nowrap; /* Empêche les boutons de passer à la ligne */
+            min-width: 0; /* Permet au conteneur flex de réduire ses enfants si nécessaire */
+        }
+
+                #artiste {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: rgb(255, 255, 255, 0.57);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Suppression du height fixe pour éviter les bugs d'affichage */
+        }
+
+        #volume {
+            width: 50px; /* Réduit très légèrement pour s'adapter aux petits espaces si besoin */
+            min-width: 30px;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            border-radius: 2px;
+            /* Conservez le reste de vos styles de volume */
+        }
+        
         </style>
     </head>
     <body class="pywebview-drag-region">
