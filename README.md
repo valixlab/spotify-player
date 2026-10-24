@@ -10,7 +10,7 @@ Le player de spotify est trop gros, et le rapetisser est une feature premium. Al
 
 🎵 Le player récupère automatiquement votre flow de musique depuis _playerctl_ et vous l'affiche joliement. Il reste discrètement en haut de toutes vos fenêtres pour quand même pouvoir y accéder quand vous jouez ou vous travaillez.
 
-![Capture d'écran du mini-player]([https://i.imgur.com/fUsFzvJ.png](https://i.imgur.com/byMVrIp.png))
+![Capture d'écran du mini-player](https://i.imgur.com/byMVrIp.png)
 
 # INSTALLATION
 
