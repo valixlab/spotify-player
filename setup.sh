@@ -35,4 +35,4 @@ EOF
 
 chmod u+x "$DESKTOP_FILE"
 
-echo "Setup terminé ! Un raccourci a été placé sur le bureau."
+printf "\033[32mSetup terminé ! Un raccourci a été placé sur le bureau.\033[0m\n"
